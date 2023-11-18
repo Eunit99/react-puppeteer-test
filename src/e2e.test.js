@@ -1,3 +1,6 @@
+
+// App.test.js
+
 import puppeteer from "puppeteer";
 
 describe("App.js", () => {
@@ -14,7 +17,7 @@ describe("App.js", () => {
     await page.waitForSelector(".form-header");
 
     await page.click(".form-input__email");
-    await page.type(".form-input__email", "username@gmail.com");
+    await page.type(".form-input__email", "admin@openreplay.com");
 
     await page.click(".form-input__password");
     await page.type(".form-input__password", "password");
@@ -27,7 +30,7 @@ describe("App.js", () => {
       (e) => e.textContent
     );
 
-    expect(text).toContain("You are now signed in.");
+    expect(text).toContain("Login successful.");
   });
 
   it("shows an error message if authentication fails", async () => {
@@ -35,7 +38,7 @@ describe("App.js", () => {
     await page.waitForSelector(".form-header");
 
     await page.click(".form-input__email");
-    await page.type(".form-input__email", "username@gmail.com");
+    await page.type(".form-input__email", "admin@openreplay.com");
 
     await page.click(".form-input__password");
     await page.type(".form-input__password", "password123");
@@ -45,9 +48,8 @@ describe("App.js", () => {
     await page.waitForSelector(".form-error-text");
     const text = await page.$eval(".form-error-text", (e) => e.textContent);
 
-    expect(text).toContain("Please enter a correct username/password.");
+    expect(text).toContain("Invalid email or password");
   });
 
   afterAll(() => browser.close());
 });
-

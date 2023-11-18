@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 
 import "./App.css";
@@ -11,7 +12,7 @@ function App() {
   const login = (event) => {
     event.preventDefault();
 
-    if (email === "username@gmail.com" && password === "password") {
+    if (email === "admin@openreplay.com" && password === "password") {
       setIsUserLoggedIn(true);
     } else {
       setIsUserLoggedIn(false);
@@ -26,13 +27,13 @@ function App() {
   return (
     <div className="App">
       <div className="form-wrapper">
-        <h1 className="form-header">Login form</h1>
+        <h1 className="form-header">Welcome back</h1>
 
         {!isUserLoggedIn && (
           <form className="form" onSubmit={login}>
             {error && (
               <p className="form-error-text">
-                Please enter a correct username/password.
+                Invalid email or password
               </p>
             )}
 
@@ -44,6 +45,7 @@ function App() {
               onChange={(e) => {
                 setEmail(e.target.value);
               }}
+              name="emailAddress"
             />
             <input
               type="password"
@@ -53,6 +55,7 @@ function App() {
               onChange={(e) => {
                 setPassword(e.target.value);
               }}
+              name="password"
             />
 
             <button type="submit" className="form-submit-button">
@@ -62,7 +65,7 @@ function App() {
         )}
 
         {isUserLoggedIn && (
-          <p className="form-success-message">You are now signed in.</p>
+          <p className="form-success-message">Login successful.</p>
         )}
       </div>
     </div>
