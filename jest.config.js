@@ -1,6 +1,6 @@
 module.exports = {
   preset: "jest-puppeteer",
-  testMatch: ["**/tests/**/*.test.js"],
+  testMatch: ["**/src/__tests__/**/*.test.js"],
   verbose: true,
 };
 
